@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context="br.usjt.desmob.geodata.MainActivity">
 
+
+    /*
+    *  LUCAS DE OLIVEIRA SANTOS
+    *  201513373
+    */
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lblContinente" />
+            android:text="@string/lbl_regiao" />
 
         <Spinner
             android:id="@+id/spinnerContinente"

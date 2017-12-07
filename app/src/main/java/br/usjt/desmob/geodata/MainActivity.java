@@ -1,7 +1,9 @@
 package br.usjt.desmob.geodata;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,7 +17,6 @@ import java.io.IOException;
  *  LUCAS DE OLIVEIRA SANTOS
  *  201513373
  */
-
 public class MainActivity extends Activity {
     Spinner spinnerContinente;
     String continente = "all";
@@ -65,7 +66,8 @@ public class MainActivity extends Activity {
                         }
                     }).start();
         } else {
-            Toast.makeText(this, "Rede inativa. Usando armazenamento local.",
+            Toast.makeText(this, getApplicationContext().getResources().
+                            getString(R.string.msg_rede),
                     Toast.LENGTH_SHORT).show();
             new CarregaPaisesDoBanco().execute("pais");
         }
@@ -75,7 +77,9 @@ public class MainActivity extends Activity {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             continente = (String) parent.getItemAtPosition(position);
-            if (continente.equals("Todos")) {
+            String[] continentes = getApplicationContext().getResources().
+                    getStringArray(R.array.continentes);
+            if (continente.equals(continentes[0])) {
                 continente = "all";
             } else {
                 continente = "region/"+continente.toLowerCase();
